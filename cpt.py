@@ -72,18 +72,20 @@ while True:
             print("\nPark not found.")
 
     elif choice == "3":
-        try:
-            rating = int(input("Enter minimum rating (1-5): "))
+    try:
+        rating = int(input("Enter minimum rating (1-5): "))
+        if rating < 1 or rating > 5:          # add this
+            print("\nPlease enter a number between 1 and 5.")
+        else:
             results = filter_by_rating(rating)
-
             if results:
                 print("\nParks with rating", rating, "or higher:")
                 for park, state in results:
                     print(f"- {park} ({state.title()})")
             else:
                 print("\nNo parks found with that rating.")
-        except ValueError:
-            print("\nPlease enter a valid number.")
+    except ValueError:
+        print("\nPlease enter a valid number.")
 
     elif choice == "4":
         print("\nGoodbye!")
